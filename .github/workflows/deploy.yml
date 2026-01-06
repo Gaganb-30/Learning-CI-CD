@@ -27,8 +27,6 @@ jobs:
           tags: |
             gagan3003/ci-cd:latest
             gagan3003/ci-cd:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       - name: Verify Pushed Image
         run: docker pull gagan3003/ci-cd:latest
