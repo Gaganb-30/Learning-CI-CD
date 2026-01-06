@@ -27,6 +27,8 @@ jobs:
           tags: |
             gagan3003/ci-cd:latest
             gagan3003/ci-cd:${{ github.sha }}
+          build-args: |
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
 
       - name: Verify Pushed Image
         run: docker pull gagan3003/ci-cd:latest

@@ -9,9 +9,6 @@ COPY packages ./packages
 
 RUN npm install
 
-ARG DATABASE_URL
-ENV DATABASE_URL=$DATABASE_URL
-
 RUN npm run db:generate
 
 RUN npm run build
