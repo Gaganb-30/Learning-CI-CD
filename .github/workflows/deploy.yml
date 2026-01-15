@@ -25,8 +25,8 @@ jobs:
           file: ./docker/Dockerfile.user
           push: true
           tags: |
-            gagan3003/ci-cd:latest
-            gagan3003/ci-cd:${{ github.sha }}
+            gagan3003/ci-cd:${{ github.run_id }}
+
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
 
