@@ -40,7 +40,13 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull gagan3003/ci-cd:latest
-            sudo docker stop web-app || true
-            sudo docker rm web-app || true
-            sudo docker run -d --name web-app -p 3005:3000 gagan3003/ci-cd:latest
+            set -e
+            docker system prune -af
+            docker pull gagan3003/ci-cd:latest
+            docker stop web-app || true
+            docker rm web-app || true
+            docker run -d \
+              --restart unless-stopped \
+              --name web-app \
+              -p 3005:3000 \
+              gagan3003/ci-cd:latest
